@@ -1,1 +1,9 @@
 @import "./base.css";
+
+.fs-7 {
+  font-size: 0.875rem !important;
+}
+
+.fs-xl {
+  font-size: 3rem !important;
+}

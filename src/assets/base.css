@@ -6,22 +6,14 @@
   --bs-secondary-rgb: 159, 0, 19 !important;
   --bs-gray-100: #cccccc !important;
   --bs-gray-200: #767676 !important;
+  --bs-secondary-color: #767676 !important;
   --bs-gray-300: #202020 !important;
   --bs-gray-400: #151515 !important;
+  --bs-body-line-height: 1.172rem !important;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   margin: 0;
-  font-weight: normal;
-}
-
-body {
-  line-height: 18.75px;
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }

@@ -1,44 +1,76 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { RouterLink } from 'vue-router'
+import { useRouter } from 'vue-router'
+import AppIcon from './AppIcon.vue';
 
+const router = useRouter()
 const isOpen = ref(false)
+
 const toggle = () => {
   isOpen.value = !isOpen.value
+}
+const navigate = (name: string) => {
+  toggle()
+  router.push({name})
 }
 </script>
 
 <template>
   <nav class="navbar navbar-expand-lg bg-primary">
     <div class="container-fluid py-3 px-3">
-      <RouterLink class="navbar-brand" to="/">
+      <span class="navbar-brand">
         <img alt="Marvel logo" src="@/assets/logo.svg" width="139" height="56" class="d-inline-block align-text-top">
-      </RouterLink>
+      </span>
       <button type="button" class="navbar-toggler border-0"
         data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false"
         aria-label="Toggle navigation" @click="toggle"
       >
-        <ion-icon v-if="isOpen" name="close-outline"></ion-icon>
-        <ion-icon v-else name="reorder-three-outline"></ion-icon>
+        <AppIcon v-if="isOpen" name="close-outline" icon-class="text-white fs-xl"/>
+        <AppIcon v-else name="reorder-three-outline" icon-class="text-white fs-xl" />
       </button>
-      <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
-        <hr class="hr"/>
+      <div class="collapse navbar-collapse flex-grow-0 z-1" id="navbarSupportedContent">
+        <hr class="hr d-lg-none"/>
         <ul class="navbar-nav gap-2">
           <li class="nav-item">
-            <RouterLink class="nav-link text-white fs-5 fw-bold" aria-current="page" to="/">HOME</RouterLink>
+            <a role="button" class="nav-link text-white fs-5 fw-bold"
+              data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              @click="navigate('Home')"
+            >
+              HOME
+            </a>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link text-white fs-5 fw-bold" to="/characters">CHARACTERS</RouterLink>
+            <a role="button" class="nav-link text-white fs-5 fw-bold"
+              data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              @click="navigate('Characters')"
+            >
+              CHARACTERS
+            </a>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link text-white fs-5 fw-bold" to="/comics">COMICS</RouterLink>
+            <a role="button" class="nav-link text-white fs-5 fw-bold"
+              data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              @click="navigate('Comics')"
+            >
+              COMICS
+            </a>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link text-white fs-5 fw-bold" to="/events">EVENTS</RouterLink>
+            <a role="button" class="nav-link text-white fs-5 fw-bold"
+              data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              @click="navigate('Events')"
+            >
+              EVENTS
+            </a>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link text-white fs-5 fw-bold" to="/contact">CONTACT</RouterLink>
+            <a role="button" class="nav-link text-white fs-5 fw-bold"
+              data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              @click="navigate('Contact')"
+            >
+              CONTACT
+            </a>
           </li>
         </ul>
       </div>
@@ -47,22 +79,28 @@ const toggle = () => {
 </template>
 
 <style scoped>
-ion-icon {
-  font-size: 48px;
-  color: white;
-}
 .navbar-toggler:focus {
   box-shadow: none;
 }
-.navbar-collapse.show, .navbar-collapse.collapsing {
+.navbar-collapse.collapsing {
   transition: none;
 }
-
-.navbar-collapse.show {
-  height: 100vh;
-  width: 100vw;
-  background-color: var(--bs-primary);
-  top: 100px;
-  left: 0;
+@media screen and (max-width: 992px) {
+  .navbar-collapse {
+    position: absolute;
+    background-color: var(--bs-primary);
+    top: 100px;
+    left: 0;
+    width: 100vw;
+    padding: 0 1rem 0 1rem;
+    transition: height 0.1s ease;
+  }
+  .navbar-collapse.show {
+    height: calc(100vh - 100px) !important;
+  }
+  .navbar-collapse.collapsing {
+    height: 0 !important;
+    transition: height 0.1s ease;
+  }
 }
 </style>

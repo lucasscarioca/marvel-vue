@@ -6,28 +6,51 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Welcome
+      name: 'Home',
+      component: Welcome,
+      meta: {
+        breadcrumbs: ['Home']
+      }
     },
     {
       path: '/characters',
-      name: 'characters',
-      component: () => import('../views/Characters.vue')
+      name: 'Characters',
+      component: () => import('../views/Characters.vue'),
+      meta: {
+        breadcrumbs: ['Characters']
+      }
+    },
+    {
+      path: '/characters/:slug',
+      name: 'CharacterDetails',
+      component: () => import('../views/CharacterDetails.vue'),
+      meta: {
+        breadcrumbs: ['Characters']
+      }
     },
     {
       path: '/comics',
-      name: 'comics',
-      component: () => import('../views/Comics.vue')
+      name: 'Comics',
+      component: () => import('../views/Comics.vue'),
+      meta: {
+        breadcrumbs: ['Comics']
+      }
     },
     {
       path: '/events',
-      name: 'events',
-      component: () => import('../views/Events.vue')
+      name: 'Events',
+      component: () => import('../views/Events.vue'),
+      meta: {
+        breadcrumbs: ['Events']
+      }
     },
     {
       path: '/contact',
-      name: 'contact',
-      component: () => import('../views/Contact.vue')
+      name: 'Contact',
+      component: () => import('../views/Contact.vue'),
+      meta: {
+        breadcrumbs: ['Contact']
+      }
     }
   ]
 })
