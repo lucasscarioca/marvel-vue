@@ -11,3 +11,8 @@
 body::-webkit-scrollbar {
   display: none;
 }
+
+.form-control:focus {
+  border-color: var(--bs-primary) !important;
+  box-shadow: 0 0 0 0.2rem rgb(236, 29, 36, 0.25) !important;
+}
