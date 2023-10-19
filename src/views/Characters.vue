@@ -30,7 +30,7 @@ onMounted(async () => {
       >
         <template v-slot:title>
           <span class="fw-bold text-decoration-underline">
-            {{ char.name }}
+            {{ char.name?.toUpperCase() }}
           </span>
         </template>
       </AppCard>

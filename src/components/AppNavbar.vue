@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import AppIcon from './AppIcon.vue';
 
 const router = useRouter()
+const route = useRoute()
 const isOpen = ref(false)
 
 const toggle = () => {
@@ -39,6 +40,7 @@ const navigate = (name: string) => {
             >
               HOME
             </a>
+            <hr v-if="route.name === 'Home'" class="d-none d-lg-block hr border border-white border-4 opacity-100 p-0 m-0"/>
           </li>
           <li class="nav-item">
             <a role="button" class="nav-link text-white fs-5 fw-bold"
@@ -47,6 +49,7 @@ const navigate = (name: string) => {
             >
               CHARACTERS
             </a>
+            <hr v-if="route.name === 'Characters'" class="d-none d-lg-block hr border border-white border-4 opacity-100 p-0 m-0"/>
           </li>
           <li class="nav-item">
             <a role="button" class="nav-link text-white fs-5 fw-bold"
@@ -55,6 +58,7 @@ const navigate = (name: string) => {
             >
               COMICS
             </a>
+            <hr v-if="route.name === 'Comics'" class="d-none d-lg-block hr border border-white border-4 opacity-100 p-0 m-0"/>
           </li>
           <li class="nav-item">
             <a role="button" class="nav-link text-white fs-5 fw-bold"
@@ -63,6 +67,7 @@ const navigate = (name: string) => {
             >
               EVENTS
             </a>
+            <hr v-if="route.name === 'Events'" class="d-none d-lg-block hr border border-white border-4 opacity-100 p-0 m-0"/>
           </li>
           <li class="nav-item">
             <a role="button" class="nav-link text-white fs-5 fw-bold"
@@ -71,6 +76,7 @@ const navigate = (name: string) => {
             >
               CONTACT
             </a>
+            <hr v-if="route.name === 'Contact'" class="d-none d-lg-block hr border border-white border-4 opacity-100 p-0 m-0"/>
           </li>
         </ul>
       </div>
@@ -116,5 +122,9 @@ const navigate = (name: string) => {
     height: 0 !important;
     transition: height 0.1s ease;
   }
+}
+
+.nav-item .hr {
+  translate: 0 350%;
 }
 </style>

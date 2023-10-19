@@ -19,9 +19,9 @@ export type Event = {
   description?: string,
   resourceURI?: string,
   urls?: Url[],
-  modified?: Date,
-  start?: Date,
-  end?: Date,
+  modified?: string,
+  start?: string,
+  end?: string,
   thumbnail?: Image,
   comics?: ComicList,
   stories?: StoryList,
@@ -30,6 +30,20 @@ export type Event = {
   creators?: CreatorList,
   next?: EventSummary,
   previous?: EventSummary,
+}
+
+export type EventQuery = {
+  name?: string,
+  nameStartsWith?: string,
+  modifiedSince?: string,
+  creators?: number,
+  characters?: number,
+  series?: number,
+  comics?: number,
+  stories?: number,
+  orderBy?: 'name' | 'startstring' | 'modified' | '-name' | '-startstring' | '-modified',
+  limit?: number,
+  offset?: number,
 }
 
 export type EventList = {

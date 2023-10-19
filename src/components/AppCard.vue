@@ -8,6 +8,7 @@ const props = defineProps<{
   routeName?: string,
   slug?: string,
   id?: number,
+  sideImage?: boolean,
 }>()
 
 const navigate = () => {
@@ -26,7 +27,26 @@ const navigate = () => {
 </script>
 
 <template>
-  <div class="row row-cols-1 p-2" :role="routeName ? 'button' : undefined"
+  <div class="row p-2 p-lg-0 gap-2 gap-lg-0" :role="routeName ? 'button' : undefined"
+    @click="routeName ? navigate() : undefined"
+  >
+    <div :class="sideImage ? 'col-lg-6' : 'col-12'">
+      <img :alt="`${imgAlt ?? 'Card'} image`"
+        :src="imgSrc" class="card-img"
+      >
+    </div>
+    <div :class="sideImage ? 'col-lg-6' : 'col-12'">
+      <div class="row">
+        <div class="col-lg-12 pt-3 pt-lg-1">
+          <slot name="title"></slot>
+        </div>
+        <div class="col-lg-12 pt-2">
+            <slot name="description"></slot>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div v-else class="row row-cols-1 p-2" :role="routeName ? 'button' : undefined"
     @click="routeName ? navigate() : null"
   >
     <div class="col">
@@ -41,7 +61,7 @@ const navigate = () => {
     <span class="col mt-1">
       <slot name="description"></slot>
     </span>
-  </div>
+  </div> -->
 </template>
 
 <style scoped>

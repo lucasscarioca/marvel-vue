@@ -8,7 +8,7 @@ import { useMarvelStore } from '@/stores/marvel'
 const marvelStore = useMarvelStore()
 
 const comics = ref<ComicData>({})
-const isLoading = ref(true)
+const isLoading = ref(false)
 
 onMounted(async () => {
   isLoading.value = true
@@ -22,14 +22,16 @@ onMounted(async () => {
     <AppSpinner />
   </div>
   <div v-else-if="comics" class="mt-4">
-    <div class="text-end pe-2 pe-lg-4 text-muted">{{ comics.count }} of {{ comics.total }}</div>
+    <div class="text-end pe-2 pe-lg-4 text-muted">
+      {{ comics.count }} of {{ comics.total }}
+    </div>
     <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 justify-content-center justify-content-lg-start row-gap-4 column-gap-4 mt-2">
       <AppCard v-for="com of comics.results" :key="com.title" :img-alt="com.title"
         :img-src="`${com.thumbnail?.path}.${com.thumbnail?.extension}`"
       >
         <template v-slot:title>
-          <span class="fw-bold text-decoration-underline">
-            {{ com.title }}
+          <span class="fw-bold">
+            {{ com.title?.toUpperCase() }}
           </span>
         </template>
         <template v-slot:description>

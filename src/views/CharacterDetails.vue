@@ -44,8 +44,7 @@ onMounted(async () => {
           <AppSpinner />
         </div>
         <div v-else class="col row row-cols-2 row-cols-md-4 row-cols-lg-6 row-gap-4 column-gap-4 justify-content-end justify-content-lg-start">
-          <AppCard v-for="comic of characterComics" :key="comic.id"
-            :img-alt="comic.title" route-name="Comics"
+          <AppCard v-for="comic of characterComics" :key="comic.id" :img-alt="comic.title"
             :img-src="`${comic.thumbnail?.path}.${comic.thumbnail?.extension}`"
           >
             <template v-slot:title>

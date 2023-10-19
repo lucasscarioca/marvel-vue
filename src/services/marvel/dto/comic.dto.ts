@@ -20,7 +20,7 @@ export type Comic = {
   issuenumber?: number,
   variantDescription?: string,
   description?: string,
-  modified?: Date,
+  modified?: string,
   isbn?: string,
   upc?: string,
   diamondCode?: string,
@@ -35,7 +35,7 @@ export type Comic = {
   variants?: ComicSummary[],
   collections?: ComicSummary[],
   collectedIssues?: ComicSummary[],
-  dates?: ComicDate[],
+  dates?: Comicstring[],
   prices?: ComicPrice[],
   thumbnail?: Image,
   images?: Image[],
@@ -62,14 +62,14 @@ export type ComicQuery = {
   ean?: string,
   issn?: string,
   hasDigitalIssue?: boolean,
-  modifiedSince?: Date,
+  modifiedSince?: string,
   creators?: number,
   series?: number,
   events?: number,
   stories?: number,
   sharedAppearances?: number,
   collaborators?: number,
-  orderBy?: 'focDate' | 'onsalesDate' | 'title' | 'issueNumber' | 'modified' | '-focDate' | '-onsalesDate' | '-title' | '-issueNumber' | '-modified',
+  orderBy?: 'focstring' | 'onsalesstring' | 'title' | 'issueNumber' | 'modified' | '-focstring' | '-onsalesstring' | '-title' | '-issueNumber' | '-modified',
   limit?: number,
   offset?: number,
 }
@@ -92,9 +92,9 @@ type TextObject = {
   text?: string,
 }
 
-type ComicDate = {
+type Comicstring = {
   type?: string,
-  date?: Date,
+  date?: string,
 }
 
 type ComicPrice = {

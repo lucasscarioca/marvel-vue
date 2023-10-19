@@ -16,7 +16,7 @@ export type Character = {
   id?: number,
   name?: string,
   description?: string,
-  modified?: Date,
+  modified?: string,
   resourceURI?: string,
   urls?: Url[],
   thumbnail?: Image,
@@ -29,7 +29,7 @@ export type Character = {
 export type CharacterQuery = {
   name?: string,
   nameStartsWith?: string,
-  modifiedSince?: Date,
+  modifiedSince?: string,
   comics?: number,
   series?: number,
   events?: number,
