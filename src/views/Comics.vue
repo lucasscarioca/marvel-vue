@@ -22,8 +22,8 @@ onMounted(async () => {
     <AppSpinner />
   </div>
   <div v-else-if="comics" class="mt-4">
-    <div class="text-end pe-2 text-muted">{{ comics.count }} of {{ comics.total }}</div>
-    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 justify-content-center  row-gap-4 column-gap-4 mt-2">
+    <div class="text-end pe-2 pe-lg-4 text-muted">{{ comics.count }} of {{ comics.total }}</div>
+    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 justify-content-center justify-content-lg-start row-gap-4 column-gap-4 mt-2">
       <AppCard v-for="com of comics.results" :key="com.title" :img-alt="com.title"
         :img-src="`${com.thumbnail?.path}.${com.thumbnail?.extension}`"
       >
