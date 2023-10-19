@@ -12,7 +12,7 @@ const isLoading = ref(true)
 
 onMounted(async () => {
   isLoading.value = true
-  characters.value = await marvelStore.listCharacters()
+  characters.value = await marvelStore.characters.list()
   isLoading.value = false
 })
 </script>
@@ -22,8 +22,8 @@ onMounted(async () => {
     <AppSpinner />
   </div>
   <div v-else-if="characters" class="mt-4">
-    <div>{{ characters.count }} of {{ characters.total }}</div>
-    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 justify-content-center  row-gap-4 column-gap-4">
+    <div class="text-end pe-2 text-muted">{{ characters.count }} of {{ characters.total }}</div>
+    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 justify-content-center  row-gap-4 column-gap-4 mt-2">
       <AppCard v-for="char of characters.results" :key="char.name" :img-alt="char.name"
         route-name="CharacterDetails" :slug="char.name" :id="char.id"
         :img-src="`${char.thumbnail?.path}.${char.thumbnail?.extension}`"

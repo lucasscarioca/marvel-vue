@@ -15,9 +15,9 @@ const isLoading = ref(true)
 
 onMounted(async () => {
   isLoading.value = true
-  character.value = await marvelStore.findCharacter(+route.params.id)
+  character.value = await marvelStore.characters.find(+route.params.id)
   isLoading.value = false
-  characterComics.value = await marvelStore.listCharacterComics(+route.params.id)
+  characterComics.value = await marvelStore.characters.listComics(+route.params.id)
 })
 </script>
 

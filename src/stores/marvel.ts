@@ -1,13 +1,15 @@
 import type { MarvelService } from '@/services/marvel'
-import type { Comic, ComicQuery, CharacterData, CharacterQuery } from '@/services/marvel/dto'
+import type { Comic, ComicQuery, CharacterData, CharacterQuery, ComicData } from '@/services/marvel/dto'
 import { defineStore } from 'pinia'
 import { inject, ref } from 'vue'
 
 export const useMarvelStore = defineStore('marvel', () => {
   const marvel = inject('marvel') as MarvelService
   const characters = ref<CharacterData>({})
+  const comics = ref<ComicData>({})
   const comicsByCharId = ref<{[id: number]: Comic[]}>({})
 
+  // CHARACTER
   const listCharacters = async (query: CharacterQuery = {limit: 6, offset: 0}) => {
     characters.value = await marvel.characters.list(query)
 
@@ -30,5 +32,21 @@ export const useMarvelStore = defineStore('marvel', () => {
     return response
   }
 
-  return { listCharacters, findCharacter, listCharacterComics }
+  // COMICS
+  const listComics = async (query: ComicQuery = {limit: 8, offset: 0}) => {
+    comics.value = await marvel.comics.list(query)
+
+    return comics.value
+  }
+
+  return { 
+    characters: { 
+      list: listCharacters,
+      find: findCharacter,
+      listComics: listCharacterComics
+    },
+    comics: {
+      list: listComics,
+    }
+  }
 })

@@ -5,7 +5,7 @@ const router = useRouter()
 const props = defineProps<{
   imgAlt?: string,
   imgSrc: string,
-  routeName: string,
+  routeName?: string,
   slug?: string,
   id?: number,
 }>()
@@ -26,7 +26,9 @@ const navigate = () => {
 </script>
 
 <template>
-  <div class="row row-cols-1 p-2" role="button" @click="navigate">
+  <div class="row row-cols-1 p-2" :role="routeName ? 'button' : undefined"
+    @click="routeName ? navigate() : null"
+  >
     <div class="col">
       <img :alt="`${imgAlt ?? 'Card'} image`"
         :src="imgSrc"
