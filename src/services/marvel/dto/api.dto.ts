@@ -1,5 +1,5 @@
 export type Wrapper = {
-  code?: Number,
+  code?: number,
   status?: string,
   copyright?: string,
   attributionText?: string,
@@ -8,10 +8,10 @@ export type Wrapper = {
 }
 
 export type Data = {
-  offset?: Number,
-  limit?: Number,
-  total?: Number,
-  count?: Number,
+  offset?: number,
+  limit?: number,
+  total?: number,
+  count?: number,
 }
 
 export type Url = {

@@ -1,60 +1,39 @@
 <script setup lang="ts">
-import { inject, onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router';
-import { type MarvelService } from '@/services/marvel'
-import type { CharacterData, CharacterQuery } from '@/services/marvel/dto'
+import { onMounted, ref } from 'vue'
+import type { CharacterData } from '@/services/marvel/dto'
+import AppCard from '@/components/AppCard.vue';
+import AppSpinner from '@/components/AppSpinner.vue';
+import { useMarvelStore } from '@/stores/marvel';
 
-const router = useRouter()
-const marvel = inject('marvel') as MarvelService
+const marvelStore = useMarvelStore()
 
 const characters = ref<CharacterData>({})
 const isLoading = ref(true)
 
-const listCharacters = async (query: CharacterQuery = {limit: 6, offset: 0}) => {
-  isLoading.value = true
-  const result = await marvel.characters.list(query)
-  isLoading.value = false
-  return result
-}
-
 onMounted(async () => {
-  characters.value = await listCharacters()
+  isLoading.value = true
+  characters.value = await marvelStore.listCharacters()
+  isLoading.value = false
 })
 </script>
 
 <template>
-  <div>
-    <button @click="router.push({name: 'CharacterDetails', params: {slug: 'Homem Aranha'}})">
-      teste
-    </button>
-    <div v-if="isLoading" class="row justify-content-center">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
-    <div v-else-if="characters">
-      <div>{{ characters.count }} of {{ characters.total }}</div>
-      <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 justify-content-center">
-        <div class="col row row-cols-1 p-2" v-for="char of characters.results" :key="char.name">
-          <div class="col">
-            <img :alt="char.name ? `${char.name} image` : 'Character image'"
-              :src="`${char.thumbnail?.path}.${char.thumbnail?.extension}`"
-              class="char-img"
-            >
-          </div>
-          <span class="col mt-3 fw-bold text-decoration-underline">
+  <div v-if="isLoading" class="row justify-content-center">
+    <AppSpinner />
+  </div>
+  <div v-else-if="characters">
+    <div>{{ characters.count }} of {{ characters.total }}</div>
+    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 justify-content-center">
+      <AppCard v-for="char of characters.results" :key="char.name" :img-alt="char.name"
+        route-name="CharacterDetails" :slug="char.name" :id="char.id"
+        :img-src="`${char.thumbnail?.path}.${char.thumbnail?.extension}`"
+      >
+        <template v-slot:title>
+          <span class="fw-bold text-decoration-underline ps-5">
             {{ char.name }}
           </span>
-        </div>
-      </div>
+        </template>
+      </AppCard>
     </div>
   </div>
 </template>
-
-<style scoped>
-.char-img {
-  height: 183px;
-  width: 80%;
-  border-radius: 4px;
-}
-</style>

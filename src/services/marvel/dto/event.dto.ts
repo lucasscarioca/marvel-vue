@@ -14,7 +14,7 @@ export type EventData = Data & {
 }
 
 export type Event = {
-  id?: Number,
+  id?: number,
   title?: string,
   description?: string,
   resourceURI?: string,
@@ -33,8 +33,8 @@ export type Event = {
 }
 
 export type EventList = {
-  available?: Number,
-  returned?: Number,
+  available?: number,
+  returned?: number,
   collectionURI?: string,
   items?: EventSummary[],
 }

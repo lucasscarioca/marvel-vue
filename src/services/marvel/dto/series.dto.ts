@@ -1,6 +1,6 @@
 export type SeriesList = {
-  available?: Number,
-  returned?: Number,
+  available?: number,
+  returned?: number,
   collectionURI?: string,
   items?: SeriesSummary[],
 }

@@ -13,7 +13,7 @@ export type CharacterData = Data & {
 }
 
 export type Character = {
-  id?: Number,
+  id?: number,
   name?: string,
   description?: string,
   modified?: Date,
@@ -30,18 +30,18 @@ export type CharacterQuery = {
   name?: string,
   nameStartsWith?: string,
   modifiedSince?: Date,
-  comics?: Number,
-  series?: Number,
-  events?: Number,
-  stories?: Number,
+  comics?: number,
+  series?: number,
+  events?: number,
+  stories?: number,
   orderBy?: 'name' | 'modified' | '-name' | '-modified',
-  limit?: Number,
-  offset?: Number,
+  limit?: number,
+  offset?: number,
 }
 
 export type CharacterList = {
-  available?: Number,
-  returned?: Number,
+  available?: number,
+  returned?: number,
   collectionURI?: string,
   items?: CharacterSummary[],
 }

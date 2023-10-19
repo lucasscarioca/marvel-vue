@@ -1,6 +1,6 @@
 export type StoryList = {
-  available?: Number,
-  returned?: Number,
+  available?: number,
+  returned?: number,
   collectionURI?: string,
   items: StorySummary[],
 }

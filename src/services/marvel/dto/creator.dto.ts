@@ -1,6 +1,6 @@
 export type CreatorList = {
-  available?: Number,
-  returned?: Number,
+  available?: number,
+  returned?: number,
   collectionURI?: string,
   items?: CreatorSummary[],
 }

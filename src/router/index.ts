@@ -21,7 +21,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/characters/:slug',
+      path: '/characters/:id/:slug',
       name: 'CharacterDetails',
       component: () => import('../views/CharacterDetails.vue'),
       meta: {

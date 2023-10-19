@@ -16,7 +16,7 @@ const navigate = (name: string) => {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg bg-primary p-0">
+  <nav class="navbar navbar-expand-lg bg-primary p-0 sticky-top">
     <div class="container-fluid py-3 px-3">
       <span class="navbar-brand">
         <img alt="Marvel logo" src="@/assets/logo.svg" class="nav-logo d-inline-block align-text-top">

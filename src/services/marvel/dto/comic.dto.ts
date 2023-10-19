@@ -14,10 +14,10 @@ export type ComicData = Data & {
 }
 
 export type Comic = {
-  id?: Number,
-  digitalId?: Number,
+  id?: number,
+  digitalId?: number,
   title?: string,
-  issueNumber?: Number,
+  issuenumber?: number,
   variantDescription?: string,
   description?: string,
   modified?: Date,
@@ -27,7 +27,7 @@ export type Comic = {
   ean?: string,
   issn?: string,
   format?: string,
-  pageCount?: Number,
+  pageCount?: number,
   textObjects?: TextObject[],
   resourceURI?: string,
   urls?: Url[],
@@ -45,9 +45,38 @@ export type Comic = {
   events?: EventList,
 }
 
+export type ComicQuery = {
+  format?: string,
+  formatType?: string,
+  noVariants?: boolean,
+  dateDescriptor?: string,
+  dateRange?: number,
+  title?: string,
+  titleStartsWith?: string,
+  startYear?: number,
+  issueNumber?: number,
+  diamondCode?: string,
+  digitalId?: number,
+  upc?: string,
+  isbn?: string,
+  ean?: string,
+  issn?: string,
+  hasDigitalIssue?: boolean,
+  modifiedSince?: Date,
+  creators?: number,
+  series?: number,
+  events?: number,
+  stories?: number,
+  sharedAppearances?: number,
+  collaborators?: number,
+  orderBy?: 'focDate' | 'onsalesDate' | 'title' | 'issueNumber' | 'modified' | '-focDate' | '-onsalesDate' | '-title' | '-issueNumber' | '-modified',
+  limit?: number,
+  offset?: number,
+}
+
 export type ComicList = {
-  available?: Number,
-  returned?: Number,
+  available?: number,
+  returned?: number,
   collectionURI?: string,
   items?: ComicSummary[],
 }
@@ -70,5 +99,5 @@ type ComicDate = {
 
 type ComicPrice = {
   type?: string,
-  price?: Number,
+  price?: number,
 }
