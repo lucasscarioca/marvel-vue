@@ -6,7 +6,7 @@ import { RouterView } from 'vue-router'
 
 <template>
   <AppNavbar />
-  <div class="py-4 px-3">
+  <div class="h-100 py-4 px-3 overflow-auto">
     <AppBreadCrumbs />
     <RouterView />
   </div>

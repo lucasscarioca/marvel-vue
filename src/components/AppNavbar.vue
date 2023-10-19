@@ -16,10 +16,10 @@ const navigate = (name: string) => {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg bg-primary">
+  <nav class="navbar navbar-expand-lg bg-primary p-0">
     <div class="container-fluid py-3 px-3">
       <span class="navbar-brand">
-        <img alt="Marvel logo" src="@/assets/logo.svg" width="139" height="56" class="d-inline-block align-text-top">
+        <img alt="Marvel logo" src="@/assets/logo.svg" class="nav-logo d-inline-block align-text-top">
       </span>
       <button type="button" class="navbar-toggler border-0"
         data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -79,6 +79,10 @@ const navigate = (name: string) => {
 </template>
 
 <style scoped>
+.nav-logo {
+  width: 139px;
+  height: 56px;
+}
 .navbar-toggler:focus {
   box-shadow: none;
 }
@@ -86,17 +90,21 @@ const navigate = (name: string) => {
   transition: none;
 }
 @media screen and (max-width: 992px) {
+  .nav-logo {
+    width: 118px;
+    height: 48px;
+  }
   .navbar-collapse {
     position: absolute;
     background-color: var(--bs-primary);
-    top: 100px;
+    top: calc(1rem + 56px);
     left: 0;
     width: 100vw;
     padding: 0 1rem 0 1rem;
     transition: height 0.1s ease;
   }
   .navbar-collapse.show {
-    height: calc(100vh - 100px) !important;
+    height: calc(100vh - calc(1rem + 56px)) !important;
   }
   .navbar-collapse.collapsing {
     height: 0 !important;
