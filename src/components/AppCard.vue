@@ -36,7 +36,7 @@ const navigate = () => {
     <span class="col mt-3 text-start">
       <slot name="title"></slot>
     </span>
-    <span class="col">
+    <span class="col mt-1">
       <slot name="description"></slot>
     </span>
   </div>

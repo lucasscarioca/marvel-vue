@@ -18,18 +18,18 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div v-if="isLoading" class="row justify-content-center">
+  <div v-if="isLoading" class="row mt-4 justify-content-center">
     <AppSpinner />
   </div>
-  <div v-else-if="characters">
+  <div v-else-if="characters" class="mt-4">
     <div>{{ characters.count }} of {{ characters.total }}</div>
-    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 justify-content-center">
+    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 justify-content-center  row-gap-4 column-gap-4">
       <AppCard v-for="char of characters.results" :key="char.name" :img-alt="char.name"
         route-name="CharacterDetails" :slug="char.name" :id="char.id"
         :img-src="`${char.thumbnail?.path}.${char.thumbnail?.extension}`"
       >
         <template v-slot:title>
-          <span class="fw-bold text-decoration-underline ps-5">
+          <span class="fw-bold text-decoration-underline">
             {{ char.name }}
           </span>
         </template>

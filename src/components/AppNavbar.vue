@@ -17,7 +17,7 @@ const navigate = (name: string) => {
 
 <template>
   <nav class="navbar navbar-expand-lg bg-primary p-0 sticky-top">
-    <div class="container-fluid py-3 px-3">
+    <div class="container-fluid py-3 px-3 px-lg-6">
       <span class="navbar-brand">
         <img alt="Marvel logo" src="@/assets/logo.svg" class="nav-logo d-inline-block align-text-top">
       </span>
@@ -79,6 +79,12 @@ const navigate = (name: string) => {
 </template>
 
 <style scoped>
+@media (min-width: 992px) {
+  .px-lg-6 {
+    padding-right: 5rem !important;
+    padding-left: 5rem !important;
+  }
+}
 .nav-logo {
   width: 139px;
   height: 56px;
