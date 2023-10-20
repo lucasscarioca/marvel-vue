@@ -20,7 +20,7 @@ const navigate = (name: string) => {
   <nav class="navbar navbar-expand-lg bg-primary p-0 sticky-top">
     <div class="container-fluid py-3 px-3 px-lg-6">
       <span class="navbar-brand">
-        <img alt="Marvel logo" src="@/assets/logo.svg" class="nav-logo d-inline-block align-text-top">
+        <img alt="Marvel logo" src="/logo.svg" class="nav-logo d-inline-block align-text-top">
       </span>
       <button type="button" class="navbar-toggler border-0"
         data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

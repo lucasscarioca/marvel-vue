@@ -3,7 +3,7 @@
 
 <template>
   <div class="page-content fs-3 fw-bold lh-base text-center">
-    <img alt="Marvel logo" src="@/assets/logo-gray.png" class="home-logo">
+    <img alt="Marvel logo" src="/logo-gray.png" class="home-logo">
     <div class="mt-4">
       WELCOME TO MARVEL'S DIRECTORY
     </div>
